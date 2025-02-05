@@ -1,0 +1,122 @@
+:root {
+	--sncf-blue: #0066b2;
+	--bread-color: #f4d03f;
+	--ham-color: #e74c3c;
+	--cheese-color: #f9e79f;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+}
+
+.menu-container {
+	position: relative;
+	width: 300px;
+}
+
+.sandwich {
+	width: 100%;
+	cursor: pointer;
+	position: relative;
+}
+
+.bread-top {
+	height: 40px;
+	background-color: var(--bread-color);
+	border-radius: 20px 20px 5px 5px;
+	position: relative;
+	transition: transform 0.3s ease;
+}
+
+.cheese {
+	height: 10px;
+	background-color: var(--cheese-color);
+	margin-top: 2px;
+}
+
+.ham {
+	height: 20px;
+	background-color: var(--ham-color);
+	margin-top: 2px;
+}
+
+.bread-bottom {
+	height: 30px;
+	background-color: var(--bread-color);
+	border-radius: 5px 5px 20px 20px;
+	margin-top: 2px;
+}
+
+.menu-items {
+	position: absolute;
+	width: 100%;
+	background: white;
+	border-radius: 0 0 10px 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-20px);
+	transition: all 0.3s ease;
+}
+
+.menu-container:hover .menu-items {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.menu-container:hover .bread-top {
+	transform: translateY(-10px);
+}
+
+.menu-item {
+	padding: 15px 20px;
+	color: var(--sncf-blue);
+	border-bottom: 1px solid #eee;
+	transition: background-color 0.2s ease;
+}
+
+.menu-item:last-child {
+	border-bottom: none;
+	border-radius: 0 0 10px 10px;
+}
+
+.menu-item:hover {
+	background-color: #f0f0f0;
+}
+
+.sesame-seeds {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.sesame-seed {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background-color: #fff9e6;
+	border-radius: 50%;
+}
+
+/* Generate sesame seeds pattern */
+.sesame-seeds::before {
+	content: '';
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background-color: #fff9e6;
+	border-radius: 50%;
+	box-shadow: 20px 10px 0 0 #fff9e6, 50px 15px 0 0 #fff9e6, 80px 8px 0 0 #fff9e6,
+		120px 12px 0 0 #fff9e6, 160px 15px 0 0 #fff9e6, 200px 10px 0 0 #fff9e6,
+		230px 13px 0 0 #fff9e6, 260px 8px 0 0 #fff9e6, 45px 25px 0 0 #fff9e6,
+		95px 20px 0 0 #fff9e6, 145px 25px 0 0 #fff9e6, 195px 22px 0 0 #fff9e6,
+		245px 25px 0 0 #fff9e6;
+}
