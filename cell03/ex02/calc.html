@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cell 3-2: It's over 9000</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				min-height: 100vh;
-				margin: 0;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cell 3-2: It's over 9000</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
 
-			.calculator {
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				align-items: center;
-			}
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
 
-			.input-group {
-				display: flex;
-				gap: 1rem;
-				align-items: center;
-			}
+      .input-group {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
 
-			input,
-			select {
-				padding: 1rem;
-				width: 100px;
-				text-align: center;
-				font-size: 1rem;
-			}
+      input,
+      select {
+        padding: 1rem;
+        width: 100px;
+        text-align: center;
+        font-size: 1rem;
+      }
 
-			#submit-button {
-				background-color: green;
-				color: white;
-				border: none;
-				cursor: pointer;
-				text-align: center;
-				font-size: 1.2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="calculator-container">
-			<div class="calculator">
-				<div class="input-group">
-					<input type="text" id="left" />
-					<select id="operator" class="operator">
-						<option value="+">+</option>
-						<option value="-">-</option>
-						<option value="*">*</option>
-						<option value="/">/</option>
-						<option value="%">%</option>
-					</select>
-					<input type="text" id="right" />
-				</div>
-				<input type="submit" value="Try me!" id="submit-button" />
-			</div>
-		</div>
+      #submit-button {
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator-container">
+      <div class="calculator">
+        <div class="input-group">
+          <input type="text" id="left" />
+          <select id="operator" class="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+          </select>
+          <input type="text" id="right" />
+        </div>
+        <input type="submit" value="Try me!" id="submit-button" />
+      </div>
+    </div>
 
-		<script>
-			function isPositiveInteger(value) {
-				return /^\d+$/.test(value)
-			}
+    <script>
+      function isValidInteger(value) {
+        const number = Number(value)
+        return !isNaN(number) && number > 0 && Math.floor(number) === number
+      }
 
-			function calculate() {
-				const leftValue = document.getElementById('left').value.trim()
-				const rightValue = document.getElementById('right').value.trim()
-				const operator = document.getElementById('operator').value
+      function calculate() {
+        const leftValue = document.getElementById('left').value.trim()
+        const rightValue = document.getElementById('right').value.trim()
+        const operator = document.getElementById('operator').value
 
-				if (!isPositiveInteger(leftValue) || !isPositiveInteger(rightValue)) {
-					alert('Error :(')
-					return
-				}
+        if (!isValidInteger(leftValue) || !isValidInteger(rightValue)) {
+          alert('Error :(')
+          return
+        }
 
-				const leftNumber = parseInt(leftValue, 10)
-				const rightNumber = parseInt(rightValue, 10)
+        const leftNumber = parseInt(leftValue, 10)
+        const rightNumber = parseInt(rightValue, 10)
 
-				if ((operator === '/' || operator === '%') && rightNumber === 0) {
-					alert('It’s over 9000!')
-					console.log('It’s over 9000!')
-					return
-				}
+        if ((operator === '/' || operator === '%') && rightNumber === 0) {
+          alert("It's over 9000!")
+          console.log("It's over 9000!")
+          return
+        }
 
-				let result
-				switch (operator) {
-					case '+':
-						result = leftNumber + rightNumber
-						break
-					case '-':
-						result = leftNumber - rightNumber
-						break
-					case '*':
-						result = leftNumber * rightNumber
-						break
-					case '/':
-						result = leftNumber / rightNumber
-						break
-					case '%':
-						result = leftNumber % rightNumber
-						break
-					default:
-						alert('Error :(')
-						return
-				}
+        let result
+        switch (operator) {
+          case '+':
+            result = leftNumber + rightNumber
+            break
+          case '-':
+            result = leftNumber - rightNumber
+            break
+          case '*':
+            result = leftNumber * rightNumber
+            break
+          case '/':
+            result = leftNumber / rightNumber
+            break
+          case '%':
+            result = leftNumber % rightNumber
+            break
+          default:
+            alert('Error :(')
+            return
+        }
 
-				alert(result)
-				console.log(result)
-			}
+        alert(result)
+        console.log(result)
+      }
 
-			document
-				.getElementById('submit-button')
-				.addEventListener('click', (event) => {
-					event.preventDefault()
-					calculate()
-				})
+      document
+        .getElementById('submit-button')
+        .addEventListener('click', (event) => {
+          event.preventDefault() // prevent page reload
+          calculate()
+        })
 
-			setInterval(() => {
-				alert('Please, use me...')
-			}, 30000)
-		</script>
-	</body>
+      setInterval(() => {
+        alert('Please, use me...')
+      }, 30000) // 30,000 ms = 30 seconds
+    </script>
+  </body>
 </html>
