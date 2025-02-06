@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ls -1 | wc -l
+echo $(ls -1 | wc -l)
