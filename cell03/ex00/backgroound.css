@@ -1,18 +1,18 @@
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	transition: background-color 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  transition: background-color 0.25s ease;
 }
 
 .container {
-	text-align: center;
+  text-align: center;
 }
 
 button {
-	padding: 5px 10px;
-	font-size: 20px;
-	cursor: pointer;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
 }

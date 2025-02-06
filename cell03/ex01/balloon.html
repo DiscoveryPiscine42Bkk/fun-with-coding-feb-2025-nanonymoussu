@@ -1,72 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cell 3-1: Explode this balloon</title>
-		<style>
-			body {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
-				margin: 0;
-				background-color: white;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cell 3-1: Explode this balloon</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: white;
+      }
 
-			#balloon {
-				width: 200px;
-				height: 200px;
-				background-color: red;
-				border-radius: 50%;
-				transition: all 0.15s ease;
-				cursor: pointer;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="balloon"></div>
+      #balloon {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-radius: 50%;
+        transition: all 0.15s ease;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="balloon"></div>
 
-		<script>
-			const balloon = document.getElementById('balloon')
+    <script>
+      const balloon = document.getElementById('balloon')
 
-			let size = 200
-			let colorIndex = 0 // Red = 0, Green = 1, Blue = 2
-			const colors = ['red', 'green', 'blue']
+      let size = 200
+      let colorIndex = 0 // Red = 0, Green = 1, Blue = 2
+      const colors = ['red', 'green', 'blue']
 
-			function updateBalloon(newSize, newColorIndex) {
-				size = newSize
-				colorIndex = newColorIndex
+      function updateBalloon(newSize, newColorIndex) {
+        size = newSize
+        colorIndex = newColorIndex
 
-				balloon.style.width = `${size}px`
-				balloon.style.height = `${size}px`
-				balloon.style.backgroundColor = colors[colorIndex]
-			}
+        balloon.style.width = `${size}px`
+        balloon.style.height = `${size}px`
+        balloon.style.backgroundColor = colors[colorIndex]
+      }
 
-			// Click: Increase size and cycle through colors
-			balloon.addEventListener('click', () => {
-				if (size >= 420) {
-					// Balloon explodes and resets to 200px and red color
-					updateBalloon(200, 0)
-				} else {
-					// Increase size by 10px
-					const newSize = size + 10
-					// Cycle through colors
-					const newColorIndex = (colorIndex + 1) % colors.length
-					updateBalloon(newSize, newColorIndex)
-				}
-			})
+      // Increase size and cycle through colors when click
+      balloon.addEventListener('click', () => {
+        if (size >= 420) {
+          // Reset size to 200px, and set color to red (index = 0)
+          updateBalloon(200, 0)
+        } else {
+          const newSize = size + 10
+          const newColorIndex = (colorIndex + 1) % colors.length
+          updateBalloon(newSize, newColorIndex)
+        }
+      })
 
-			// Mouse leave: Decrease size and reverse color order
-			balloon.addEventListener('mouseleave', () => {
-				if (size > 200) {
-					// Decrease size by 5px (minimum size is 200px)
-					const newSize = Math.max(size - 5, 200)
-					// Reverse color order
-					const newColorIndex = (colorIndex - 1 + colors.length) % colors.length
-					updateBalloon(newSize, newColorIndex)
-				}
-			})
-		</script>
-	</body>
+      // Decrease size and reverse color order when mouse leaves
+      balloon.addEventListener('mouseleave', () => {
+        if (size > 200) {
+          const newSize = Math.max(size - 5, 200)
+          const newColorIndex = (colorIndex - 1 + colors.length) % colors.length
+          updateBalloon(newSize, newColorIndex)
+        }
+      })
+    </script>
+  </body>
 </html>
