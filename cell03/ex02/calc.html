@@ -66,7 +66,7 @@
     <script>
       function isValidInteger(value) {
         const number = Number(value)
-        return !isNaN(number) && number > 0 && Math.floor(number) === number
+        return !isNaN(number) && number >= 0 && Math.floor(number) === number
       }
 
       function calculate() {
