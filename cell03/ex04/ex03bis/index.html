@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cell 3-3: To do or not to do</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: lightskyblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-width: 360px;
+        margin: auto;
+      }
+
+      h1 {
+        color: black;
+        text-align: center;
+      }
+
+      #new-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 25px;
+        background-color: steelblue;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: x-large;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+      }
+
+      #new-button:hover {
+        background-color: lightsteelblue;
+      }
+
+      #ft_list {
+        width: 100%;
+      }
+
+      .todo {
+        background: rgb(234, 222, 213);
+        padding: 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+        margin-bottom: 12px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .todo:hover {
+        background: rgb(180, 191, 213);
+      }
+
+      .empty-todo {
+        text-align: center;
+        color: rgb(100, 111, 112);
+        padding: 25px;
+        font-style: italic;
+        background: rgb(234, 234, 234);
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>My To-Do List</h1>
+    <button id="new-button">New</button>
+    <div id="ft_list"></div>
+    <script src="todo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cell 3-1: Explode this balloon</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: white;
+      }
+
+      #balloon {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-radius: 50%;
+        transition: all 0.15s ease;
+        cursor: pointer;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="balloon"></div>
+
+    <script>
+      $(document).ready(function () {
+        let size = 200
+        let colorIndex = 0 // Red = 0, Green = 1, Blue = 2
+        const colors = ['red', 'green', 'blue']
+        const $balloon = $('#balloon')
+
+        function updateBalloon(newSize, newColorIndex) {
+          size = newSize
+          colorIndex = newColorIndex
+          $balloon.css({
+            width: size + 'px',
+            height: size + 'px',
+            backgroundColor: colors[colorIndex],
+          })
+        }
+
+        // Increase size and cycle through colors when clicked
+        $balloon.on('click', function () {
+          if (size >= 420) {
+            // Reset size to 200px, and set color to red (index = 0)
+            updateBalloon(200, 0)
+          } else {
+            const newSize = size + 10
+            const newColorIndex = (colorIndex + 1) % colors.length
+            updateBalloon(newSize, newColorIndex)
+          }
+        })
+
+        // Decrease size and reverse color order when mouse leaves
+        $balloon.on('mouseleave', function () {
+          if (size > 200) {
+            const newSize = Math.max(size - 5, 200)
+            const newColorIndex =
+              (colorIndex - 1 + colors.length) % colors.length
+            updateBalloon(newSize, newColorIndex)
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

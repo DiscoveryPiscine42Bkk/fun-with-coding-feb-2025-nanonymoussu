@@ -1,14 +1,16 @@
 $(document).ready(function () {
-  // Smooth Scroll
   $('.nav-link').click(function (e) {
-    e.preventDefault()
     let target = $(this).attr('href')
-    $('html, body').animate(
-      {
-        scrollTop: $(target).offset().top,
-      },
-      800
-    )
+
+    if (target.startsWith('#')) {
+      e.preventDefault()
+      $('html, body').animate(
+        {
+          scrollTop: $(target).offset().top,
+        },
+        800
+      )
+    }
   })
 
   // Navbar Scroll Effect

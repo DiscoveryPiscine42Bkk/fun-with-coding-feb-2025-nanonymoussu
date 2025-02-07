@@ -29,3 +29,20 @@ window.addEventListener('scroll', function () {
     }
   })
 })
+
+// Mobile menu toggle
+const navToggle = document.getElementById('mobile-nav-toggle')
+const navMenu = document.getElementById('navbarNav')
+
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show')
+  navToggle.classList.toggle('active')
+})
+
+// Close mobile menu when clicking nav links
+document.querySelectorAll('.nav-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('show')
+    navToggle.classList.remove('active')
+  })
+})
